@@ -24,10 +24,11 @@ Install all the required npm dependencies:
 npm install
 ```
 
-Create a `.env` file in the root directory of your project and add your Telegram bot token:
+Create a `.env` file in the root directory of your project and add your Telegram bot token and Database URL:
 
 ```plaintext
 BOT_TOKEN=your_bot_token_here
+DB_URL=your_db_url
 ```
 
 Ensure your database is set up correctly. This project uses the following table structure:
