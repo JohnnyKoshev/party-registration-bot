@@ -25,9 +25,7 @@ interface IUser {
 interface IUserRow extends RowDataPacket, IUser {}
 
 async function initDataBase() {
-  pool = mysql.createPool(
-    process.env.DB_URL || "mysql://root:admin@localhost:3306/party-registration"
-  );
+  pool = mysql.createPool(`${process.env.DB_URL}`);
 }
 
 export async function getPool() {
