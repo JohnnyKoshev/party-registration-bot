@@ -6,8 +6,10 @@
 //     surname VARCHAR(255),
 //     selfie_size FLOAT
 // );
-
 import mysql, { RowDataPacket } from "mysql2";
+import dotenv from "dotenv";
+
+dotenv.config();
 
 let pool: mysql.Pool | null = null;
 
@@ -23,12 +25,9 @@ interface IUser {
 interface IUserRow extends RowDataPacket, IUser {}
 
 async function initDataBase() {
-  pool = mysql.createPool({
-    host: "localhost",
-    user: "root",
-    password: "admin",
-    database: "party-registration",
-  });
+  pool = mysql.createPool(
+    process.env.DB_URL || "mysql://root:admin@localhost:3306/party-registration"
+  );
 }
 
 export async function getPool() {

@@ -5,15 +5,15 @@ import {
   conversations,
   createConversation,
 } from "@grammyjs/conversations";
-import { env } from "process";
 import * as db from "./db";
+import dotenv from "dotenv";
+
+dotenv.config();
 
 type MyContext = Context & ConversationFlavor;
 type MyConversation = Conversation<MyContext>;
 
-const bot = new Bot<MyContext>(
-  `${env.BOT_TOKEN || "7052291391:AAEr6BeSC9YFt4bSnXij36kG9T4jiI3ujRU"}`
-);
+const bot = new Bot<MyContext>(`${process.env.BOT_TOKEN}`);
 
 bot.use(session({ initial: () => ({}) }));
 bot.use(conversations());
